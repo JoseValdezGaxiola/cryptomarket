@@ -3,8 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay } from "swiper"
 import "swiper/css"
 import "swiper/css/autoplay"
+import { useRequest } from "../Hooks/useRequest"
 
-const TrendingCoin = ({ trending }) => {
+const TrendingCoin = () => {
+  const { data, error } = useRequest("https://api.coingecko.com/api/v3/search/trending")
+  if (error) return <div>failed to load</div>
+  if (!data) return <h1>Loading...</h1>
+
   return (
     <>
       <h1 className='mx-auto mt-12 max-w-6xl text-2xl font-bold'>Trending Coins</h1>
@@ -32,12 +37,9 @@ const TrendingCoin = ({ trending }) => {
         modules={[Autoplay]}
         className='my-6 max-w-6xl '
       >
-        {trending.coins?.map((coin, i) => (
-          <SwiperSlide>
-            <div
-              key={i}
-              className='mx-auto flex w-full justify-between rounded-2xl border  border-secondary bg-primary p-4 px-2 shadow-xl duration-300 ease-in-out hover:scale-105'
-            >
+        {data.coins?.map((coin, i) => (
+          <SwiperSlide key={i}>
+            <div className='mx-auto flex w-full justify-between rounded-2xl border  border-secondary bg-primary p-4 px-2 shadow-xl duration-300 ease-in-out hover:scale-105'>
               <div className='flex w-full items-center justify-between'>
                 <div className='flex'>
                   <img className='mr-4 rounded-full' src={coin.item.small} alt='/' />
