@@ -2,11 +2,11 @@ import CoinSearch from "../Components/CoinSearch"
 
 import CoinTrending from "../Components/CoinTrending"
 
-const Home = ({ coins, trending }) => {
+const Home = () => {
   return (
     <div>
-      <CoinTrending trending={trending} />
-      <CoinSearch coins={coins} />
+      <CoinTrending />
+      <CoinSearch />
     </div>
   )
 }
