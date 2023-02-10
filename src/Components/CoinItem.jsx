@@ -11,7 +11,7 @@ const CoinItem = ({ coin }) => {
       <td>
         <Link to={`/coin/${coin.id}`}>
           <div className='flex items-center'>
-            <img className='mr-2 w-6 rounded-full' src={coin.image} alt={coin.id} />
+            <img className='mr-2 w-6 rounded-full' src={coin.image} alt={coin.id} loading='lazy' />
             <p className='hidden sm:table-cell'>{coin.name}</p>
           </div>
         </Link>
