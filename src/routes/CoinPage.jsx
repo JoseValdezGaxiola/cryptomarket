@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom"
 const CoinPage = () => {
   const [coin, setCoin] = useState([])
   const params = useParams()
-  console.log(params)
+
   const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}?localization=false&sparkline=true`
 
   useEffect(() => {
