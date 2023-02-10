@@ -2,12 +2,18 @@ import { useState } from "react"
 
 import CoinDisplay from "./CoinDisplay"
 import CoinFilter from "./CoinFilter"
-const CoinSearch = ({ coins }) => {
+import { useRequest } from "../Hooks/useRequest"
+const CoinSearch = () => {
   const [searchCoin, setSearchCoin] = useState("")
+  const { data, error } = useRequest(
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true"
+  )
+  if (error) return <div>failed to load</div>
+  if (!data) return <h1>Loading...</h1>
   const coinsToShow =
     searchCoin.length === 0
-      ? coins
-      : coins.filter((value) => value.name.toLowerCase().includes(searchCoin.toLowerCase()))
+      ? data
+      : data.filter((value) => value.name.toLowerCase().includes(searchCoin.toLowerCase()))
 
   return (
     <div className='mx-auto my-4 max-w-6xl rounded-2xl border  border-secondary px-2  shadow-xl'>
