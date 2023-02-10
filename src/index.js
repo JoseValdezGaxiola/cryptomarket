@@ -10,7 +10,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <BrowserRouter>
-    <SWRConfig value={{ fetcher }}>
+    <SWRConfig value={{ refreshInterval: 600000, fetcher }}>
       <App />
     </SWRConfig>
   </BrowserRouter>
