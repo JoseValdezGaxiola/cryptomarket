@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import Spinner from "./Spinner"
 import CoinDisplay from "./CoinDisplay"
 import CoinFilter from "./CoinFilter"
 import { useRequest } from "../Hooks/useRequest"
@@ -9,7 +9,7 @@ const CoinSearch = () => {
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true"
   )
   if (error) return <div>failed to load</div>
-  if (!data) return <h1>Loading...</h1>
+  if (!data) return <Spinner />
   const coinsToShow =
     searchCoin.length === 0
       ? data

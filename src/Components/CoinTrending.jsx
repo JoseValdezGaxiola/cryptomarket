@@ -8,7 +8,7 @@ import { useRequest } from "../Hooks/useRequest"
 const TrendingCoin = () => {
   const { data, error } = useRequest("https://api.coingecko.com/api/v3/search/trending")
   if (error) return <div>failed to load</div>
-  if (!data) return <h1>Loading...</h1>
+  if (!data) return <></>
 
   return (
     <>
