@@ -19,3 +19,9 @@ Crytpcurrency tracker using the CoinGecko API inspired by the crypto.com/price d
 
 - `routes/Coinpage` - Indivdual coin information
 - `index.js` - SWR global wrapper and fetcher with interval of 10 minutes .
+
+## To Do:
+
+- Add unit and e2e tests with Cypress
+- Add account feature with Expressjs and Mongodb backend
+- Add favorite coin feature
