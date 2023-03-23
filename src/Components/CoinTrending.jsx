@@ -3,13 +3,14 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay } from "swiper"
 import "swiper/css"
 import "swiper/css/autoplay"
+import Spinner from "./Spinner"
 import { useRequest } from "../Hooks/useRequest"
 
 const TrendingCoin = () => {
   const { data, error } = useRequest("https://api.coingecko.com/api/v3/search/trending")
   if (error) return <div>failed to load</div>
-  if (!data) return <></>
-
+  if (!data) return <Spinner />
+  console.log(data)
   return (
     <>
       <h1 className='mx-auto mt-12 max-w-6xl text-2xl font-bold'>Trending Coins</h1>
@@ -54,7 +55,7 @@ const TrendingCoin = () => {
                     src='https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579'
                     alt='/'
                   />
-                  <p>{coin.item.price_btc.toFixed(6)}</p>
+                  <p>{coin.item.price_btc?.toFixed(6)}</p>
                 </div>
               </div>
             </div>
